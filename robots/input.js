@@ -1,11 +1,16 @@
 const readline = require("readline-sync");
+const state = require("../robots/state.js");
 
-function userInput(content) {
+function robot() {
+  const content = {
+    maximumSentences: 7
+  };
+
   content.searchTerm = askAndReturnSearchTerm();
   content.prefix = askAndReturnPrefix();
+  state.save(content);
 
   function askAndReturnSearchTerm() {
-    //return "TERM EXAMPLE";
     return readline.question("Type a Wikipedia search term: ");
   }
 
@@ -21,4 +26,4 @@ function userInput(content) {
   }
 }
 
-module.exports = userInput;
+module.exports = robot;
